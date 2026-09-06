@@ -6,7 +6,7 @@
 ![XGBoost](https://img.shields.io/badge/XGBoost-171515?style=for-the-badge&logo=xgboost&logoColor=white)
 ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=for-the-badge&logo=huggingface&logoColor=000)
 
-## 🎯 Project Background
+## 📝 Project Background
 
 This project implements an end-to-end machine learning pipeline designed to predict short-term stock market trends. Its innovation lies in data hybridisation, combining traditional technical price analysis (quantitative data) with sentiment analysis of financial news using artificial intelligence (textual data processed by FinBERT).
 
