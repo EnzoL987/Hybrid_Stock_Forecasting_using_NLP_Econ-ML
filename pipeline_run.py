@@ -75,21 +75,21 @@ def run_daily_pipeline(ticker: str = "AAPL", company_name: str = "Apple Inc."):
     # ---------------------------------------------------------
     logging.info("--- Phase 6: Live Prediction ---")
     try:
-        # 1. We're waking the "champion" up using the secure absolute path
+        # Activation of the ‘champion’ model via the secure path
         modele_en_production = joblib.load(model_path)
         
-        # 2. We calculate technical indicators on the full dataset we just extracted
+        # We calculate technical indicators on the full dataset we just extracted
         df_live = calculate_technical_indicators(df_ml_ready)
         
-        # 3. We select the exact 10 columns and isolate the very last row (.iloc[[-1]])
+        # We select the exact 10 columns and isolate the very last row (.iloc[[-1]])
         donnees_du_jour = df_live[['Open', 'Close', 'Volume', 'SMA_20', 'EMA_20', 
                                    'Daily_Return', 'Volatility_14', 'RSI_14', 
                                    'daily_sentiment', 'news_volume']].iloc[[-1]]
         
-        # 4. Inference
+        # Inference
         prediction = modele_en_production.predict(donnees_du_jour)
         
-        # 5. Signal Interpretation
+        # Signal Interpretation
         if prediction[0] == 1:
             logging.info("📈 SIGNAL FINAL : The trend suggests you should BUY (5-day bullish forecast)")
         else:
