@@ -93,16 +93,16 @@ python pipeline_run.py
 
 ## 📊 Results and Detailed Analysis
 
-Does the integration of textual analysis offer a real predictive advantage over a classic quantitative model? 
+My question was the following, does the integration of textual analysis offer a real predictive advantage over a classic quantitative model ? 
 
-**Yes!** As detailed in the Projet finance file, combining technical price indicators with FinBERT's sentiment score allowed our **XGBoost** algorithm to successfully capture complex market signals, outperforming traditional approaches and a baseline Random Forest[cite: 1, 3].
+The analysis shows that **Yes!** as detailed in the Projet finance file, combining technical price indicators with FinBERT's sentiment score allowed our **XGBoost** algorithm to successfully capture complex market signals, outperforming traditional approaches and a baseline Random Forest.
 
 Here is a quick overview of the model's performance:
-* 🏆 **Accuracy:** Achieved **~71.43%** on unseen test data[cite: 1].
-* 📈 **Robustness:** Reached an **AUC of 0.84 (ROC)** and **0.78 (Precision-Recall)**, demonstrating a strong capacity to minimize costly false positive signals[cite: 2].
-* 🧠 **NLP Impact:** Feature importance analysis mathematically proves that the `daily_sentiment` active layer significantly refines the algorithm's decisions, outranking classic metrics like the RSI[cite: 2].
+* 🏆 **Accuracy:** Achieved **~71.43%** on unseen test data.
+* 📈 **Robustness:** Reached an **AUC of 0.84 (ROC)** and **0.78 (Precision-Recall)**, demonstrating a strong capacity to minimize costly false positive signals.
+* 🧠 **NLP Impact:** Feature importance analysis mathematically proves that the `daily_sentiment` active layer significantly refines the algorithm's decisions, outranking classic metrics like the RSI.
 
-Dive into the synthesis report to discover the complete analysis, detailed performance metrics (Accuracy, F1-Score), and our interactive visualizations:
+Dive into the synthesis report to discover the complete analysis, detailed performance metrics (Accuracy, F1-Score), and my interactive visualizations:
 
 > 👉 [**Open the Synthesis Report (Notebook 02)**](Notebooks/02_Rapport_de_Synthese.ipynb)
 ##
