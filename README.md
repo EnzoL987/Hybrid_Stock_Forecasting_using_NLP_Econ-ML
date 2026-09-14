@@ -93,9 +93,9 @@ python pipeline_run.py
 
 ## 📊 Results and Detailed Analysis
 
-My question was the following, does the integration of textual analysis offer a real predictive advantage over a classic quantitative model ? 
+My question was this: does incorporating text analysis offer a genuine predictive advantage over a traditional quantitative model?
 
-The analysis shows that **Yes!** as detailed in the Projet finance file, combining technical price indicators with FinBERT's sentiment score allowed our **XGBoost** algorithm to successfully capture complex market signals, outperforming traditional approaches and a baseline Random Forest.
+The analysis shows that it does! As detailed in the ‘02_Rapport_de_Synthese’ report, combining technical price indicators with FinBERT’s sentiment score enabled our XGBoost algorithm to successfully capture complex market signals.
 
 Here is a quick overview of the model's performance:
 * 🏆 **Accuracy:** Achieved **~71.43%** on unseen test data.
