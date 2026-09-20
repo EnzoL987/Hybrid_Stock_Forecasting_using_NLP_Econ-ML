@@ -30,37 +30,37 @@ def run_daily_pipeline(ticker: str = "AAPL", company_name: str = "Apple Inc."):
     db_path = os.path.join(PROJECT_ROOT, "SQL", "finance_nlp.db")
     model_path = os.path.join(PROJECT_ROOT, "Data", "champion_model.pkl")
 
-    # ---------------------------------------------------------
+
     # PHASE 1: LOAD (Database Setup)
-    # ---------------------------------------------------------
-    logging.info("--- Phase 1: Database Initialization ---")
+
+    logging.info("- Phase 1: Database Initialization")
     initialize_database(db_name=db_path)
     asset_id = insert_asset_dimension(db_path, ticker, company_name, "Technology")
     
-    # ---------------------------------------------------------
+
     # PHASE 2: EXTRACT
-    # ---------------------------------------------------------
-    logging.info("--- Phase 2: Data Extraction ---")
+
+    logging.info("- Phase 2: Data Extraction")
     df_market = fetch_market_data(ticker, period="6mo")
     df_news = fetch_financial_news(f"{ticker} OR {company_name}", days_back=7)
     
-    # ---------------------------------------------------------
+
     # PHASE 3: TRANSFORM
-    # ---------------------------------------------------------
-    logging.info("--- Phase 3: Data Transformation (NLP) ---")
+
+    logging.info("- Phase 3: Data Transformation (NLP)")
     df_news_sentiment = analyze_financial_sentiment(df_news)
     
-    # ---------------------------------------------------------
+
     # PHASE 4: LOAD (Insert daily data)
-    # ---------------------------------------------------------
-    logging.info("--- Phase 4: Storing Data in SQL ---")
+
+    logging.info("- Phase 4: Storing Data in SQL")
     insert_market_data(db_path, df_market, asset_id)
     insert_news_sentiment(db_path, df_news_sentiment, asset_id)
     
-    # ---------------------------------------------------------
+  
     # PHASE 5: MACHINE LEARNING (Train & Evaluate)
-    # ---------------------------------------------------------
-    logging.info("--- Phase 5: Machine Learning Execution ---")
+
+    logging.info("- Phase 5: Machine Learning Execution")
     # Fetch the newly combined dataset from SQL
     df_ml_ready = fetch_ml_data(db_path, ticker)
     
@@ -70,10 +70,10 @@ def run_daily_pipeline(ticker: str = "AAPL", company_name: str = "Apple Inc."):
     else:
         logging.warning("No data available for Machine Learning training.")
         
-    # ---------------------------------------------------------
+
     # PHASE 6: INFERENCE (Live Prediction for today)
-    # ---------------------------------------------------------
-    logging.info("--- Phase 6: Live Prediction ---")
+
+    logging.info("- Phase 6: Live Prediction")
     try:
         # Activation of the ‘champion’ model via the secure path
         modele_en_production = joblib.load(model_path)
