@@ -54,13 +54,34 @@ Projet_Finance_NLP/
 └── requirements.txt        # List of the project’s Python dependencies
 ```
 
-Why this architecture?
+Architecture:
 
 * Modularity (Src/): Each stage of data processing is isolated in a dedicated script, making the code clean, maintainable and testable.
 
 * Separation of storage and code (SQL/ & Data/): Databases and resource-intensive models are isolated from the execution scripts to comply with deployment best practices[cite: 2].
 
 * Automation (pipeline_run.py): This script imports the functions from Src/ to launch the entire process automatically.
+
+## 📊 Results and Detailed Analysis
+
+My question was this: does incorporating text analysis offer a genuine predictive advantage over a traditional quantitative model?
+
+The analysis shows that it does! As detailed in the ‘02_Rapport_de_Synthese’ report, combining technical price indicators with FinBERT’s sentiment score enabled our XGBoost algorithm to successfully capture complex market signals.
+
+Here is a quick overview of the model's performance:
+* 🏆 **Accuracy:** Achieved **~71.43%** on unseen test data.
+* 📈 **Robustness:** Reached an **AUC of 0.84 (ROC)** and **0.78 (Precision-Recall)**, demonstrating a strong capacity to minimize costly false positive signals.
+* 🧠 **NLP Impact:** Feature importance analysis mathematically proves that the `daily_sentiment` active layer significantly refines the algorithm's decisions, outranking classic metrics like the RSI.
+
+Dive into the synthesis report to discover the complete analysis, detailed performance metrics (Accuracy, F1-Score), and my interactive visualizations:
+
+> 👉 [**Open the Synthesis Report (Notebook 02)**](Notebooks/02_Rapport_de_Synthese.ipynb)
+
+
+
+***
+
+
 
 ## ⚙️ Installation and Execution
 
@@ -90,19 +111,4 @@ Bash
 ```text
 python pipeline_run.py
 ```
-
-## 📊 Results and Detailed Analysis
-
-My question was this: does incorporating text analysis offer a genuine predictive advantage over a traditional quantitative model?
-
-The analysis shows that it does! As detailed in the ‘02_Rapport_de_Synthese’ report, combining technical price indicators with FinBERT’s sentiment score enabled our XGBoost algorithm to successfully capture complex market signals.
-
-Here is a quick overview of the model's performance:
-* 🏆 **Accuracy:** Achieved **~71.43%** on unseen test data.
-* 📈 **Robustness:** Reached an **AUC of 0.84 (ROC)** and **0.78 (Precision-Recall)**, demonstrating a strong capacity to minimize costly false positive signals.
-* 🧠 **NLP Impact:** Feature importance analysis mathematically proves that the `daily_sentiment` active layer significantly refines the algorithm's decisions, outranking classic metrics like the RSI.
-
-Dive into the synthesis report to discover the complete analysis, detailed performance metrics (Accuracy, F1-Score), and my interactive visualizations:
-
-> 👉 [**Open the Synthesis Report (Notebook 02)**](Notebooks/02_Rapport_de_Synthese.ipynb)
 ##
